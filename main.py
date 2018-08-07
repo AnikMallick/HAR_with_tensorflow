@@ -30,11 +30,11 @@ nn = Neural_network(n_examples = train.n_examples,
 					n_classes = train.cls_len)
 nn.create_graph(node_list = [250])
 
-nn.train_network_with_while(batch_size = 128, 
-							next_batch_func = train.next_batch, 
-							validation_f = validation_features, 
-							validation_onehot = validation_onehot,
-							valiation_thr = 0.992)
+nn.train_network_with_while(batch_size = 128,
+			    next_batch_func = train.next_batch, 
+			    validation_f = validation_features, 
+			    validation_onehot = validation_onehot,
+			    valiation_thr = 0.992)
 
 #nn.train_network(n_iteration = 200, batch_size = 128, next_batch_func = train.next_batch)
 
