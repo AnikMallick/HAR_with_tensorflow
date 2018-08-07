@@ -33,10 +33,9 @@ Recall: 0.99085
 F1 score: 0.98819
 
 ![confm](https://user-images.githubusercontent.com/22342888/43793938-8cd53bb6-9a9a-11e8-8810-30d8c9620532.png)
+Figure 1(a)
  
- Figure 1(a)
- 
-
+![accuracy_plot](https://user-images.githubusercontent.com/22342888/43794290-6f7b1d82-9a9b-11e8-956d-9d1009f5306c.PNG)
 Figure 1(b)
  
 Figure 1(c)
