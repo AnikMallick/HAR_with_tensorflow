@@ -41,6 +41,7 @@ Figure 1(b)
  
 Figure 1(c)
  
+![acc_table](https://user-images.githubusercontent.com/22342888/43793671-e582a448-9a99-11e8-89b1-b44ddf628181.jpeg)
 Figure 1(d)
 
 
