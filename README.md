@@ -32,17 +32,17 @@ Recall: 0.99085
 
 F1 score: 0.98819
 
+### Figure 1(a)-
 ![confm](https://user-images.githubusercontent.com/22342888/43793938-8cd53bb6-9a9a-11e8-8810-30d8c9620532.png)
-Figure 1(a)
- 
-![accuracy_plot](https://user-images.githubusercontent.com/22342888/43794290-6f7b1d82-9a9b-11e8-956d-9d1009f5306c.PNG)
-Figure 1(b)
- 
-Figure 1(c)
- 
-![acc_table](https://user-images.githubusercontent.com/22342888/43793671-e582a448-9a99-11e8-89b1-b44ddf628181.jpeg)
 
-Figure 1(d)
+### Figure 1(b)-
+![accuracy_plot](https://user-images.githubusercontent.com/22342888/43794290-6f7b1d82-9a9b-11e8-956d-9d1009f5306c.PNG)
+
+### Figure 1(c)-
+![loss_plot](https://user-images.githubusercontent.com/22342888/43794431-d29ebed2-9a9b-11e8-8644-b5166baea77f.PNG)
+
+### Figure 1(d)-
+![acc_table](https://user-images.githubusercontent.com/22342888/43793671-e582a448-9a99-11e8-89b1-b44ddf628181.jpeg)
 
 
 Figure 1(a) - Confusion Matrix, Figure 1(b) - Accuracy plot on the training data, 
