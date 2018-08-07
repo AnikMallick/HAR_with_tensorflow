@@ -8,7 +8,7 @@ class Data_set(object):
 
 		Args:
 			path: path of the data, path must contain both 
-				features and labels in different file
+			features and labels in different file
 		'''
 		self._path = path
 		self._cls = [0]
@@ -222,9 +222,9 @@ class Neural_network(object):
 
 		Args:
 			n_examples: no of examples in training dataset,
-						can be kept as none if restoring from old ckpt
+			can be kept as none if restoring from old ckpt
 			n_features: no of features in training dataset,
-						can be kept as none if restoring from old ckpt
+			can be kept as none if restoring from old ckpt
 			n_classes: no classes in this experiment
 
 			Note:
@@ -309,13 +309,13 @@ class Neural_network(object):
 		'''
 		with tf.name_scope(name):
 			weights = Neural_network.__variable_on_cpu(name = name + '_W',
-														dtype = dtype,
-														shape = [n_inputs,n_nodes],
-														initializer = tf.contrib.layers.xavier_initializer())
+								   dtype = dtype,
+								   shape = [n_inputs,n_nodes],
+								   initializer = tf.contrib.layers.xavier_initializer())
 			biases = Neural_network.__variable_on_cpu(name = name + '_B',
-														shape = [n_nodes],
-														initializer=tf.constant_initializer(0.1),
-														dtype = dtype)
+								  shape = [n_nodes],
+								  initializer=tf.constant_initializer(0.1),
+								  dtype = dtype)
 
 			layer = tf.matmul(inputs,weights) + biases
 
@@ -372,28 +372,28 @@ class Neural_network(object):
 				n_inputs = self._n_features
 
 			layer_list.append(Neural_network.create_layer(inputs = inputs, 
-															n_inputs = n_inputs, 
-															n_nodes = self._node_list[layer], 
-															dtype = self._dtype, 
-															name = layer_name_list[layer]))
+								      n_inputs = n_inputs, 
+								      n_nodes = self._node_list[layer], 
+								      dtype = self._dtype, 
+								      name = layer_name_list[layer]))
 			#dropout
 			layer_list[layer] = tf.nn.dropout(layer_list[layer], 
-												keep_prob = self.__hold_prob)
+							  keep_prob = self.__hold_prob)
 
 		#output layer
 		output_layer = Neural_network.create_layer(inputs = layer_list[-1], 
-													n_inputs = self._node_list[-1], 
-													n_nodes = self._n_classes, 
-													dtype = self._dtype, 
-													name = 'output_layer',
-													 use_relu = False)
+							   n_inputs = self._node_list[-1], 
+							   n_nodes = self._n_classes, 
+							   dtype = self._dtype, 
+							   name = 'output_layer',
+							   use_relu = False)
 		onehot_labels_pred = tf.nn.softmax(output_layer)
 		self.__labels_pred = tf.argmax(onehot_labels_pred, axis = 1, name = 'predicted_labels')
 
 		#loss calculation
 		with tf.name_scope('loss'):
 			cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits = output_layer,
-																	labels = self.__onehot_labels)
+										labels = self.__onehot_labels)
 			self.__loss_op = tf.reduce_mean(cross_entropy, name = 'model_loss')
 
 		#optimization or minimizing loss
@@ -437,8 +437,8 @@ class Neural_network(object):
 				for batch in range(n_batches):
 					batch_X, batch_onehot, _ = next_batch_func(batch_size = batch_size)
 					train_feed_dict = {self.__features : batch_X,
-										self.__onehot_labels : batch_onehot,
-										self.__hold_prob : self._hold_prob_value}
+							   self.__onehot_labels : batch_onehot,
+							   self.__hold_prob : self._hold_prob_value}
 
 					#training the network
 					sess.run(self.__train_op, feed_dict = train_feed_dict)
@@ -447,7 +447,8 @@ class Neural_network(object):
 						writer.add_summary(s, epoch)
 
 					if (epoch+1) % self._print_parameter == 0:
-						temp_acc, temp_loss = sess.run([self.__accuracy_op, self.__loss_op], feed_dict = train_feed_dict)
+						temp_acc, temp_loss = sess.run([self.__accuracy_op, self.__loss_op], 
+									       feed_dict = train_feed_dict)
 						acc_list_print.append(temp_acc)
 						loss_list_print.append(temp_loss)
 
@@ -505,8 +506,8 @@ class Neural_network(object):
 			for batch in range(n_batches):
 				batch_X, batch_onehot, _ = next_batch_func(batch_size = batch_size)
 				test_feed_dict = {self.__features : batch_X,
-								self.__onehot_labels : batch_onehot,
-								self.__hold_prob : 1.0}
+						  self.__onehot_labels : batch_onehot,
+						  self.__hold_prob : 1.0}
 				temp_acc= sess.run(self.__accuracy_op, feed_dict = test_feed_dict)
 				acc_list_print.append(temp_acc)
 			accuracy = sum(acc_list_print) / n_batches
@@ -536,13 +537,14 @@ class Neural_network(object):
 			self.__load_graph_from_ckpt(sess,load_model_path)
 
 			test_feed_dict = {self.__features : features,
-								self.__hold_prob : 1}
+					  self.__hold_prob : 1}
 
 			labels_pred = sess.run(self.__labels_pred, feed_dict = test_feed_dict)
 			labels_pred = np.array(labels_pred)
 
-		return_data = np.concatenate([true_labels.reshape([-1,1]), labels_pred.reshape([-1,1])],
-									axis = 1)
+		return_data = np.concatenate([true_labels.reshape([-1,1]),
+					      labels_pred.reshape([-1,1])],
+					     axis = 1)
 		return_dataframe = pd.DataFrame(data = return_data, columns = ['True_Labels', 'Predicted_Labels'])
 
 		return return_dataframe
@@ -578,16 +580,16 @@ class Neural_network(object):
 
 			validation_acc = 0
 			validation_feed_dict = {self.__features : validation_f,
-									self.__onehot_labels : validation_onehot,
-									self.__hold_prob : 1}
+						self.__onehot_labels : validation_onehot,
+						self.__hold_prob : 1}
 			epoch = 0
 
 			while True:
 				for batch in range(n_batches):
 					batch_X, batch_onehot, _ = next_batch_func(batch_size = batch_size)
 					train_feed_dict = {self.__features : batch_X,
-										self.__onehot_labels : batch_onehot,
-										self.__hold_prob : self._hold_prob_value}
+							   self.__onehot_labels : batch_onehot,
+							   self.__hold_prob : self._hold_prob_value}
 
 					#training
 					sess.run(self.__train_op, feed_dict = train_feed_dict)
@@ -597,9 +599,10 @@ class Neural_network(object):
 
 					if (epoch+1) % self._print_parameter == 0:
 						train_check_feed_dict = {self.__features : batch_X,
-												self.__onehot_labels : batch_onehot,
-												self.__hold_prob : 1.0}
-						temp_acc, temp_loss = sess.run([self.__accuracy_op, self.__loss_op], feed_dict = train_check_feed_dict)
+									 self.__onehot_labels : batch_onehot,
+									 self.__hold_prob : 1.0}
+						temp_acc, temp_loss = sess.run([self.__accuracy_op, self.__loss_op], 
+									       feed_dict = train_check_feed_dict)
 						acc_list_print.append(temp_acc)
 						loss_list_print.append(temp_loss)
 
