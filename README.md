@@ -32,9 +32,9 @@ Recall: 0.99085
 
 F1 score: 0.98819
 
-
+![confm](https://user-images.githubusercontent.com/22342888/43793938-8cd53bb6-9a9a-11e8-8810-30d8c9620532.png)
  
-Figure 1(a)
+ Figure 1(a)
  
 
 Figure 1(b)
@@ -42,6 +42,7 @@ Figure 1(b)
 Figure 1(c)
  
 ![acc_table](https://user-images.githubusercontent.com/22342888/43793671-e582a448-9a99-11e8-89b1-b44ddf628181.jpeg)
+
 Figure 1(d)
 
 
@@ -52,5 +53,6 @@ Figure 1(c) - Loss plot on the training data, Figure 1(d) - Table of accuracy of
 
 
 # Reference - 
-Data Resource- UCI Machine Learning Repository(https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#)
+Data Resource- 
+UCI Machine Learning Repository(https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#)
 
