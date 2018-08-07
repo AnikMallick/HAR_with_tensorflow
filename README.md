@@ -3,7 +3,7 @@
 Implementing Neural Network with tensorflow to Recognize Human activity. Here H.A.R. dataset from UCI Machine Learning Repository was used, which has 10299 no of instances and 561 attributes. This database was built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smart phone with embedded inertial sensors. In total of six activity (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) was recorded in the dataset. 
 A simple neural network of 1 hidden layer with 250 neurons was used to recognize activities with 95.27% accuracy.
 
-# Results:
+## Results:
 
 Obtained an accuracy of 95.27% with the below hyperparameters - 
 
@@ -22,7 +22,7 @@ Bias: 0.1
 Validation threshold: 0.992
 
 
-### Observed output -
+## Observed output -
 
 Test accuracy: 95.27%
 
